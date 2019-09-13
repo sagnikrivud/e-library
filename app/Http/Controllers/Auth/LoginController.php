@@ -29,7 +29,12 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
+     
 
+     public function dashboard()
+     {
+        return view('dashboard');
+     }
     /**
      * Create a new controller instance.
      *

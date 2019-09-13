@@ -27,14 +27,20 @@ Route::post('/update/{id}','ProfileController@update')->name('update');
 Route::get('/book','BookController@book')->name('book');
 Route::get('/mybook','BookController@mybook')->name('mybook');
 Route::get('/action','AjaxController@action')->name('action');
-Route::get('/printPDF','BookController@printPDF')->name('printPDF');
+//Route::get('/printPDF','BookController@printPDF')->name('printPDF');
 Route::post('/booksubmit','BookController@booksubmit')->name('booksubmit');
 Route::post('/check', 'AjaxController@check')->name('check');
 Route::post('/mymail','HomeController@mymail')->name('mymail');
 Route::get('/manual','HomeController@manual')->name('manual');
 Route::post('/authenticated','Auth\LoginController@authenticated');
 //Route::get('booksubmit','IssueController@booksubmit')->name('booksubmit');
-Route::post('/logout','Auth\LoginController@logout')->name('logout');
+//----------------------Admin Routes-----------------------------------//
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+Route::get('/dashboard','Auth\LoginController@dashboard')->name('dashboard');
+Route::get('/issuemonitor','AdminController@issuemonitor')->name('issuemonitor');
+Route::get('/booklist','AdminController@booklist')->name('booklist');
+Route::get('/addbook','AdminController@addbook')->name('addbook');
+Route::post('/add','AdminController@add')->name('add');
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
