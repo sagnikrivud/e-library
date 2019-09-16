@@ -38,6 +38,7 @@
 			<th>Date</th>
 			<th>Status</th>
 			<th>Position</th>
+			<th>Update</th>
 		</thead>
 		<tbody>
 			@foreach ($issues as $issue)
@@ -74,13 +75,14 @@
             <?php }else if ($issue['status']=="F")  { ?>
             <span class="badge badge-secondary">Failed</span>
             <?php } ?> </td>
+            <td><button class="btn btn-secondary" type="submit" name="status" value=$id>Update</button></td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
-	<div class="button">
+	<!-- <div class="button">
 	<button class="btn btn-info"  type="submit" value="">Update</button>
-	</div>
+	</div> -->
 	</form>
 </center>
 <center>

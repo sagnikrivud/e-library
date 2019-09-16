@@ -6,6 +6,7 @@ use App\Issue;
 use App\User;
 use App\Book;
 use Illuminate\Http\Request;
+use DB;
 
 class AdminController extends Controller
 {
@@ -35,26 +36,43 @@ class AdminController extends Controller
      	return view('book_list',['books'=>$book]);
      }
    //--------------store Books------------------------//
-   public function addbook()
-   {
-   	return view('addbook');
-   }  
-   public function add(Request $request)
-   {
-    	$book = new Book();
+					   public function addbook()
+					   {
+					   	return view('addbook');                //Route Page
+					   }  
+					   public function add(Request $request)   //Store / Add Book
+					   {
+					    	$book = new Book();
 
-        $book ->name = $request->input('name');
-        $book ->quantity = $request->input('quantity');
-        $book ->author = $request->input('author');
-        $image = $request->image;
-        $pic   = $image->getClientOriginalName();
-        $image->move(public_path("Images"), $pic);
-        $path  = '/Images/'.$pic;
+					        $book ->name     =  $request->input('name');
+					        $book ->quantity =  $request->input('quantity');
+					        $book ->author   =  $request->input('author');
+					        $book ->image    =  $request->image;
+					        $image           =  $request->image;
+					        $pic             =  $image->getClientOriginalName();
+					        $image->move(public_path("Images"), $pic);
+					        $path            = '/Images/'.$pic;
 
-        $book ->save();
+					        $book ->save();
 
-        return "success";
-   } 
+
+					        return "success";
+					   } 
+  
+			  //---------------------Update Issue status----------------//
+			   public function issueupdate($id,Request $request)
+			{
+			  $id  = Issue::all()->id;	
+			  DB::table('issues')->where('id',$id)->update(['status' => $request->status]);  
+			  return redirect('/issuemonitor');   
+			}
+
+//-------------Inform User about return Book----------------------//
+			   public function returnbook()
+			   {
+                 $email = User::all()->email;
+
+			   }
 
 
 }

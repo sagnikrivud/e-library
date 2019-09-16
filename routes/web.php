@@ -41,6 +41,7 @@ Route::get('/issuemonitor','AdminController@issuemonitor')->name('issuemonitor')
 Route::get('/booklist','AdminController@booklist')->name('booklist');
 Route::get('/addbook','AdminController@addbook')->name('addbook');
 Route::post('/add','AdminController@add')->name('add');
+Route::post('/issueupdate/{id}','AdminController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";

@@ -45,3 +45,7 @@ class ProfileController extends Controller
       // return view('home');
     }
 }
+
+/*DB::table('post')
+            ->where('id', 3)
+            ->update(['title' => "Updated Title"]);*/
