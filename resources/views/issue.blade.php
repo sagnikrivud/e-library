@@ -87,7 +87,7 @@
 </center>
 <center>
 	<div class="button mt-2">
-	<form action="" method="get">
+	<form action="{{route('dashboard')}}" method="get">
 		<button class="btn btn-warning" type="submit"  value="submit">Back</button>
 	</form>
 	</div>
