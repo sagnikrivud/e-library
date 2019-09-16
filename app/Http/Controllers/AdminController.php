@@ -58,12 +58,26 @@ class AdminController extends Controller
 
 					        return "success";
 					   } 
+
+					   //---------Status redirect page-----------------//
+					   public function statusupdate($id)
+						    {
+						    	//dd($id); 		
+						      //$id  = $request->id;
+						     //$issue = Issue::with('issue','reserve')->get()->toArray();
+						    //  dd($issue);
+						     return view('status')->with('id',$id);
+
+						    }
   
 			  //---------------------Update Issue status----------------//
-			   public function issueupdate($id,Request $request)
-			{
-			  $id  = Issue::all()->id;	
-			  DB::table('issues')->where('id',$id)->update(['status' => $request->status]);  
+			public function issueupdate($id,Request $request)
+			{			
+		//		 $id  = $request->id;
+		//		 $sagnik = $request->sagnik;
+		//	 	 dd($sagnik);			 
+		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]); 
+		      //dd($issue); 
 			  return redirect('/issuemonitor');   
 			}
 
@@ -72,6 +86,7 @@ class AdminController extends Controller
 			   {
                  $email = User::all()->email;
 
+                 
 			   }
 
 

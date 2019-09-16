@@ -29,54 +29,54 @@
 	<h2>Issues</h2>
 </center>
 <center>
-	<form action="" method="">
+	<form action="" method="post">
+		@csrf
 	<table class="table table-condensed" width="50">
 		<thead>
+			<th>ID</th>
 			<th>User</th>
 			<th>Book</th>
 			<th>Look</th>
 			<th>Date</th>
-			<th>Status</th>
+		
 			<th>Position</th>
 			<th>Update</th>
 		</thead>
 		<tbody>
 			@foreach ($issues as $issue)
 			
+
 			<tr>
+				<td>{{$issue['id']}}</td>
 				<td>{{$issue['issue']['name']}}</td>
 				
 				<td>{{$issue['reserve'][0]['name']}}</td> <!-- reserve relation is a array under a user for thid reason an [0] have tobe defined -->
-	<td><img src="{{$issue['reserve'][0]['image']}}" height="100px" width="100px"></td>
+				<td><img src="{{$issue['reserve'][0]['image']}}" height="100px" width="100px"></td>
 				<td>{{$issue['updated_at']}}</td>
-				<td>
-					<select class="form-control" name="status">
-						<option>---</option>
-						<option value="A">Assign</option>
-						<option value="C">Confirm</option>
-                        <option value="F">Reject</option>
-                        <option value="D">Returned</option>						
-				    </select>
-				</td>
+				
+				<!-- ------------------------------------------ -->
 				<td><?php if($issue['status']=="A") { ?>
-            <span class="badge badge-info">Assigned</span>
+		            <span class="badge badge-info">Assigned</span>
 
-            <?php } else if($issue['status']=="I")  { ?>
+		            <?php } else if($issue['status']=="I")  { ?>
 
-            <span class="badge badge-danger">Not Assigned</span>
+		            <span class="badge badge-danger">Not Assigned</span>
 
-            <?php }else if ($issue['status']=="C")  { ?>
+		            <?php }else if ($issue['status']=="C")  { ?>
 
-            <span class="badge badge-success">Confirmed</span>
+		            <span class="badge badge-success">Confirmed</span>
 
-            <?php }else if ($issue['status']=="D")  { ?>
-            <span class="badge badge-warning">Returned</span>
+		            <?php }else if ($issue['status']=="D")  { ?>
+		            <span class="badge badge-warning">Returned</span>
 
-            <?php }else if ($issue['status']=="F")  { ?>
-            <span class="badge badge-secondary">Failed</span>
-            <?php } ?> </td>
-            <td><button class="btn btn-secondary" type="submit" name="status" value=$id>Update</button></td>
-			</tr>
+		            <?php }else if ($issue['status']=="F")  { ?>
+		            <span class="badge badge-secondary">Failed</span>
+		            <?php } ?> 
+        		</td>
+	            <td>
+	            	<a href="/statusupdate/{{$issue['id']}}">Update Status</a>
+	            	<!-- <input type="hidden" name="id" value="{{$issue['id']}}" /> --></td>
+				</tr>
 			@endforeach
 		</tbody>
 	</table>
@@ -87,7 +87,7 @@
 </center>
 <center>
 	<div class="button mt-2">
-	<form action="dashboard" method="get">
+	<form action="" method="get">
 		<button class="btn btn-warning" type="submit"  value="submit">Back</button>
 	</form>
 	</div>
