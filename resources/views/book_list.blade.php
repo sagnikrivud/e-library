@@ -22,6 +22,7 @@
 			<th>Look</th>
 			<th>Author</th>
 			<th>Quantity</th>
+			<th>Add Copy</th>
 		</thead>
 		<tbody>
 			@foreach($books as $bookData)
@@ -31,6 +32,7 @@
 				<td><img src="{{$bookData->image}}" height="100px" width="100px" border="50%"></td>
 				<td>{{$bookData->author}}</td>
 				<td>{{$bookData->quantity}}</td>
+				<td><a href="{{route('back')}}"><font color="#445JJJ">Add Copy</font></a></td>
 				
 			</tr>
 			@endforeach

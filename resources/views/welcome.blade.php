@@ -92,7 +92,7 @@
                 <div class="title m-b-md">
                    <font color="#YYY555">Welcome to E-Library Facility</font> 
                 </div>
-
+                &copy; SAGNIK DEY (UIPL)
                <!--  <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
