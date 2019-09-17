@@ -18,6 +18,6 @@ class Controller extends BaseController
 
     public function about()
     {
-    	return view('about');
+    	return view('web.about');
     }
 }

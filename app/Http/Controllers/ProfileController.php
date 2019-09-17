@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
       $user = Auth::user();
       //dd($user);
-      return view('profile',compact('user'));
+      return view('user.profile',compact('user'));
 
     }
  

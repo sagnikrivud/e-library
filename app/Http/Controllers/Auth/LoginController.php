@@ -48,9 +48,9 @@ class LoginController extends Controller
     protected function authenticated()
     {
         if (Auth::user()->roles == "1") {
-            $redirect = 'dashboard';
+            $redirect = 'admin.dashboard';
         } else{
-            $redirect = 'home';
+            $redirect = 'user.home';
         }
         return view($redirect);
     }
