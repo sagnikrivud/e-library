@@ -178,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-        Zizaco\Entrust\EntrustServiceProvider::class
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class
         
 
     ],
