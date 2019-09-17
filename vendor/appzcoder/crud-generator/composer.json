@@ -1,0 +1,44 @@
+{
+    "name": "appzcoder/crud-generator",
+    "license": "MIT",
+    "description": "Laravel CRUD Generator",
+    "keywords": [
+        "laravel",
+        "crud",
+        "crud generator",
+        "laravel crud generator",
+        "api generator"
+    ],
+    "authors": [
+        {
+            "name": "Sohel Amin",
+            "email": "sohelamincse@gmail.com",
+            "homepage": "http://www.appzcoder.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/support": "^5.3",
+        "laravelcollective/html": "^5.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "^0.9.6",
+        "phpunit/phpunit": "^5.7",
+        "orchestra/testbench": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Appzcoder\\CrudGenerator\\": "src/"
+        },
+        "classmap": [
+            "tests"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Appzcoder\\CrudGenerator\\CrudGeneratorServiceProvider"
+            ]
+        }
+    }
+}
