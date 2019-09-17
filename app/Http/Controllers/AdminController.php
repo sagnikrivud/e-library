@@ -37,7 +37,7 @@ class AdminController extends Controller
      public function booklist()
      {
      	$book = Book::all();
-     //	dd($book);
+
      	return view('admin.book_list',['books'=>$book]);
      }
    //--------------store Books------------------------//
@@ -63,6 +63,13 @@ class AdminController extends Controller
 
 					        return "success";
 					   } 
+    //-------------------------Add Copy-----------------------------//
+					   public function addcopy($id)
+					   {
+                       return view('admin.addcopy')->with('id',$id);
+
+					   }
+
 
 					   //---------Status redirect page-----------------//
 					   public function statusupdate($id)
@@ -78,11 +85,16 @@ class AdminController extends Controller
 			  //---------------------Update Issue status----------------//
 			public function issueupdate($id,Request $request)
 			{			
-		//		 $id  = $request->id;
-		//		 $sagnik = $request->sagnik;
-		//	 	 dd($sagnik);			 
-		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]); 
-		      //dd($issue); 
+			 
+		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]);
+
+		      /*if(Issue::with('reserve')->where(['status'=>'C'])->get()){
+		        DB::table('books')->decrement('available',1);	
+		      }elseif(Issue::with('reserve')->where(['status'=>'C'])->get()){
+                DB::table('books')->increment('available',1);
+		          }*/ 
+		      
+		       
 			  return redirect('/issuemonitor');   
 			}
 
