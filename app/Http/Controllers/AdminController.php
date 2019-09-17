@@ -14,6 +14,11 @@ class AdminController extends Controller
      {
         return view('dashboard');
      }
+     //-----------------------------------------------//
+     public function main()
+     {
+     	return view('admin.main');
+     }
 
   //---------------------------------monitor------------------//
      public function issuemonitor()
@@ -25,7 +30,7 @@ class AdminController extends Controller
      //	dd($issue);
      //	echo "<pre>";
      //	print_r($issue);
-        return view('issue',['issues'=>$issue]);
+        return view('admin.issue',['issues'=>$issue]);
      }
   //------------------------------show booklist---------------//   
 
@@ -33,12 +38,12 @@ class AdminController extends Controller
      {
      	$book = Book::all();
      //	dd($book);
-     	return view('book_list',['books'=>$book]);
+     	return view('admin.book_list',['books'=>$book]);
      }
    //--------------store Books------------------------//
 					   public function addbook()
 					   {
-					   	return view('addbook');                //Route Page
+					   	return view('admin.addbook');                //Route Page
 					   }  
 					   public function add(Request $request)   //Store / Add Book
 					   {
@@ -66,7 +71,7 @@ class AdminController extends Controller
 						      //$id  = $request->id;
 						     //$issue = Issue::with('issue','reserve')->get()->toArray();
 						    //  dd($issue);
-						     return view('status')->with('id',$id);
+						     return view('admin.status')->with('id',$id);
 
 						    }
   
@@ -81,13 +86,22 @@ class AdminController extends Controller
 			  return redirect('/issuemonitor');   
 			}
 
-//-------------Inform User about return Book----------------------//
+       //-------------Inform User about return Book----------------------//
 			   public function returnbook()
 			   {
                  $email = User::all()->email;
 
                  
 			   }
+        //----------------------------Member List---------------------------------//
+    public function member()
+    {
+    	$user = DB::table('users')->where(['verified'=>1,'roles'=>0])->get();
+    	//$user = User::all()->where(['verified'=>1,'roles'=>0]);
+    	dd($user);
+    	return view('admin.member',['users' => $user]);
+    }			   
+
 
 
 }

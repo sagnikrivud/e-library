@@ -43,6 +43,8 @@ Route::get('/addbook','AdminController@addbook')->name('addbook');
 Route::post('/add','AdminController@add')->name('add');
 Route::post('/issueupdate/{id}','AdminController@issueupdate')->name('issueupdate');
 Route::get('/statusupdate/{id}','AdminController@statusupdate')->name('statusupdate');
+Route::get('/main','AdminController@main')->name('main');
+Route::get('/member','AdminController@member')->name('member');
 //Route::get('/test','TestController@test')->name('test');
 //Route::post('/issueupdate','TestController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {

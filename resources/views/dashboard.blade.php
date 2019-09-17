@@ -26,15 +26,11 @@
   <button class="btn btn-danger" type="submit" value="submit">Logout</button>
 </form>
 </div>
+
 <div class="button mt-2">
-<form action="{{route('issuemonitor')}}" method="get">
-  <button class="btn btn-info" type="submit" value="submit">Issue-Monitor</button>
-</form>
-</div>
-<div class="button mt-2">
-<form action="{{route('booklist')}}" method="get">
-  <button class="btn btn-info" type="submit" value="submit">Book List</button>
-</form>
+  <form action="{{route('main')}}" method="get">
+    <button class="btn btn-success" type="submit" value="submit">Main</button>
+  </form>
 </div>
 </center>
 </div>

@@ -12,6 +12,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+	<style type="text/css">
+		img {
+  border-radius: 8px;
+            }
+	</style>
 <div class="card">
 	<form action="{{route('addbook')}}" method="get">
 	<button class="btn btn-info" type="submit" value="submit">Add Book+</button>
@@ -39,7 +44,7 @@
 		</tbody>
 	</table>
 	<div class="button">
-		<form action="{{route('dashboard')}}" method="get">
+		<form action="{{route('main')}}" method="get">
 		<button class="" type="submit" value="submit">Back</button>
 		</form>
 	</div>
