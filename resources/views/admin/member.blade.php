@@ -19,6 +19,7 @@
 	<table class="table">
 		<thead class="thead-light">
 			<th>Name</th>
+			<th>Image</th>
 			<th>Email</th>
 			<th>Contact</th>
 			<th>Updated At</th>
@@ -28,6 +29,7 @@
 			@foreach($users as $userData)
 			<tr>
 				<td>{{$userData->name}}</td>
+				<td><img src="{{$userData->image}}" height="80px" width="80px"></td>
 				<td>{{$userData->email}}</td>
 				<td>{{$userData->mobile}}</td>
 				<td>{{$userData->updated_at}}</td>

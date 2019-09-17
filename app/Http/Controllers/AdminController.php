@@ -52,12 +52,12 @@ class AdminController extends Controller
 					        $book ->name     =  $request->input('name');
 					        $book ->quantity =  $request->input('quantity');
 					        $book ->author   =  $request->input('author');
-					        $book ->image    =  $request->image;
+					        
 					        $image           =  $request->image;
 					        $pic             =  $image->getClientOriginalName();
 					        $image->move(public_path("Images"), $pic);
 					        $path            = '/Images/'.$pic;
-
+                            $book ->image    =  $path;
 					        $book ->save();
 
 
