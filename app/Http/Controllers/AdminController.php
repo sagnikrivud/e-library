@@ -109,7 +109,7 @@ class AdminController extends Controller
 		          } 
 		      
 		       
-			  return redirect('/issuemonitor');   
+			  return redirect('/issuemonitor')->withSuccess('Updated..!');   
 			}
 
        //-------------Inform User about return Book----------------------//
