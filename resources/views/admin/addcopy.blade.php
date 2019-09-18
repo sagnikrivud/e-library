@@ -14,7 +14,7 @@
 <body>
 	<h2><font color="#RR3300">Update Your Copies And Avibility</font></h2>
 	<center>
-<form action="" method="">
+<form action="" method="post">
 	<div class="form-group">
 		<label>Update Total Quantity</label>
 	<input type="text" name="quantity" value="" required="">

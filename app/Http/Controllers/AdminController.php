@@ -64,9 +64,9 @@ class AdminController extends Controller
 					        return "success";
 					   } 
     //-------------------------Add Copy-----------------------------//
-					   public function addcopy()
+					   public function addcopy($id)
 					   {
-                       return view('admin.addcopy');//->with('id',$id);
+                       return view('admin.addcopy')->with('id',$id);//->with('id',$id);
 
 					   }
 //----------------------------------------------------------------------------------//

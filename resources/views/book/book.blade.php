@@ -72,6 +72,60 @@ img {
     transform: rotate(270deg);
     z-index:999;
 }
+*{
+  transition: all 0.2s ease-in-out 0s
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 40px auto;
+}
+.image, .shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 105%;
+  border-radius: 8px;
+  background-color: #eee;
+}
+
+.shadow {
+  transform: scale(0.9)  translateY(30px);
+  -webkit-filter: blur(25px);
+  filter: blur(25px);
+  background-color: rgba(0,0,0,0.3);
+}
+
+.shadowImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.card:hover{ 
+  transform: scale(1.04) translateY(-5px);
+}
+.card:hover .image,
+.card:hover .shadow {
+    background-size: 103%;
+}
+.card:hover .shadow {
+  transform: scale(0.85) translateY(40px);
+  -webkit-filter: blur(30px);
+  filter: blur(30px);
+}
+
+button{
+  position: relative;
+  margin: 0 auto;
+  left: 50%;
+  transform: translate3d(-50%, 0,0)
+}
 	</style>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -183,4 +237,75 @@ $(document).ready(function(){
   fetch_book_data(query);
  });
 });
+</script>
+<script>
+  const imageName = (image) => {
+  return {
+    backgroundImage: `url(https://unsplash.it/200/300/?${image})`
+  }
+}
+
+class ChangeImageButton extends React.Component{
+  render(){
+    return <button onClick={this.props.handleClick}>{this.props.text}</button>
+  }
+  
+}
+
+
+
+class Card extends React.Component{
+  constructor(){
+    super()
+    this.state = {
+      imageNumber: 'image=881'
+    }
+    this.changeImage = this.changeImage.bind(this)
+    this.chooseRandom = this.chooseRandom.bind(this)
+  } 
+  
+  chooseRandom(){
+    return (Math.floor(Math.random() * 1000)+300)
+  }
+  
+  changeImage(){
+    this.setState({
+      imageNumber: `image=${this.chooseRandom()}`
+    })
+  }
+  
+  
+  render(){
+    console.log(this.state.imageNumber)
+    return (
+      <div>
+         <div className="card">
+          <div className="shadow">
+            <div 
+              className="shadowImage" 
+              style={imageName(this.state.imageNumber)}
+            ></div>
+          </div>
+          <div 
+            className="image" 
+            style={imageName(this.state.imageNumber)}
+          ></div>
+        </div>
+        
+        <ChangeImageButton
+          handleClick={this.changeImage}
+          text="Randomise image"
+        />
+      </div>
+     
+    )
+  }
+}
+
+
+
+ReactDOM.render(
+  <Card />,
+  document.getElementById('app')
+)
 </script>
