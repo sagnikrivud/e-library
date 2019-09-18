@@ -36,8 +36,8 @@
 	Book: <td></td>
      </div> -->
 	 <div class="form-group">
-	<select name="status" class="form-control">
-		<option>--</option>
+	<select name="status" class="form-control" id="select" class="required">
+		<option value="" disabled="disabled">--</option>
 		<option value="A">Assign</option>
 		<option value="C">Confirmed</option>
 		<option value="D">Returned</option>
