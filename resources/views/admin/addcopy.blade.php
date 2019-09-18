@@ -11,18 +11,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body onload="loadingAjax('myDiv');">
 	<h2><font color="#RR3300">Update Your Copies And Avibility</font></h2>
 	<center>
 <form action="{{route('updatecopy',$id)}}" method="post">
 	@csrf
 	<div class="form-group">
 		<label>Update Total Quantity</label>
-	<input type="text" name="quantity" value="" required="">
+	<input type="text" name="quantity" value="" id="tbNumbers" onkeypress="javascript:return isNumber(event)" placeholder="*Only Numbers" required="" >
 	</div>
 	<div class="form-group">
 	<label>Update Avilible copies</label> 
-	<input type="text" name="" value="" required="" readonly="">
+	<input type="text" name="" value="" readonly="" placeholder="*same as Copy Number">
     </div>
 <div class="button mt-2">
 	<button class="btn btn-info" type="submit" value="submit">Update</button>
@@ -35,4 +35,14 @@
 </div>
 </center>
 </body>
+<script>
+   
+    function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }    
+</script>
 </html>

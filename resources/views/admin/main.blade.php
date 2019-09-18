@@ -13,30 +13,46 @@
 </head>
 <body>
 <center>
+
 	<div class="card">
 		<center>
+      <table>
+        <td>
 			<div class="button mt-2">
 <form action="{{route('issuemonitor')}}" method="get">
   <button class="btn btn-info" type="submit" value="submit">Issue-Monitor</button>
 </form>
 </div>
+</td>
+<td>
 <div class="button mt-2">
 <form action="{{route('booklist')}}" method="get">
   <button class="btn btn-info" type="submit" value="submit">Book List</button>
 </form>
 </div>
+</td>
+<td>
 <div class="buton mt-2">
   <form action="{{route('member')}}" method="get">
     <button class="btn btn-primary" type="submit" value="submit">Members</button>
   </form>
 </div>
+</td>
+<td>
 <div class="button mt-2">
 <form action="{{route('logout')}}" method="get">
   <button class="btn btn-danger" type="submit" value="submit">Logout<i class="fa fa-log-off"></i></button>
 </form>
 </div>
+</td>
 		</center>
+    </table>
 	</div>
+</center>
+<center>
+  <div class="card">
+    
+  </div>
 </center>
 </body>
 </html>

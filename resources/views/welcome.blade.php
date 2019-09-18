@@ -74,16 +74,18 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href=""><form action="{{ url('/home') }}" method="get"><button class="btn btn-info" type="submit" value="submit">Home</button></form></a>
+                    <table>
+                     <td><a href=""><form action="{{ url('/home') }}" method="get"><button class="btn btn-info" type="submit" value="submit">Home</button></form></a></td>   
                     @else
-                        <a href=""><form action="{{ route('login') }}" method="get"><button class='btn btn-danger' type="submit" value="submit">Login</button></form></a>
+                        <td><a href=""><form action="{{ route('login') }}" method="get"><button class='btn btn-danger' type="submit" value="submit">Login</button></form></a></td>
 
                         @if (Route::has('register'))
-                            <a href="" class="button"><form action="{{ route('register') }}" method="get"><button class="btn btn-success" type="submit" value="submit">Create Account</button></form></a>
+                            <td><a href="" class="button"><form action="{{ route('register') }}" method="get"><button class="btn btn-success" type="submit" value="submit">Create Account</button></form></a></td>
                         @endif
-                        <form action="{{route('about')}}" method="">
+                        <td><form action="{{route('about')}}" method="">
 <button class="btn btn-warning" type="submit" value="submit">About</button>
-             </form>
+             </form></td>
+             </table>
                     @endauth
                 </div>
             @endif
