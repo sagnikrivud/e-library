@@ -40,7 +40,7 @@ class AjaxController extends Controller
 
          <td>'.$row->name.'</td>
          <td>'.$row->author.'</td>
-         <td>'.$row->quantity.'</td>
+         <td>'.$row->available.'</td>
          <td><img width="100px" height="100px" src="'. $row->image.'"</td> 
          <td><button type="submit" name = "book_id" value = "'.$row->id.'">Request</button></td>
          </tr>

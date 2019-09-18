@@ -120,7 +120,7 @@ img {
             <td>{{$bookData->id}}</td>
 					<td><font color="#EE22QQ">{{$bookData->name}}</font></td>
 					<td>{{$bookData->author}}</td>
-					<td><font color="#390cf0">{{$bookData->quantity}}</font></td>
+					<td><font color="#390cf0">{{$bookData->available}}</font></td>
 					<td><img src="{{$bookData->image}}" height="90" width="90"></td>
 					<td><button class="button" type="submit" value="submit"><i class="fa fa-bell" color="#EE0011"></i></button></td>
 					</tr>

@@ -17,7 +17,10 @@ class BookController extends Controller
 
     public function book()
     {
-          $book = DB::table('books')->get();
+          $book = DB::table('books')->where('available','>', '0')->get()->toArray();
+       //   echo '<pre>';
+        //  print_r($book);
+         // die;
            return view('book.book',['books'=>$book]);
     }
 
@@ -50,7 +53,7 @@ class BookController extends Controller
 
     //  dd($issue);
    //   flash()->success('Success', 'Request send to Admin Successfully.');
-      return redirect('/home')->with('You have done successfully');
+      return redirect('/mybook')->with('You have done successfully');
 
     }
      

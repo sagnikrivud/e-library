@@ -64,14 +64,22 @@ class AdminController extends Controller
 					        return "success";
 					   } 
     //-------------------------Add Copy-----------------------------//
-					   public function addcopy($id)
+					   public function addcopy()
 					   {
-                       return view('admin.addcopy')->with('id',$id);
+                       return view('admin.addcopy');//->with('id',$id);
+
+					   }
+//----------------------------------------------------------------------------------//
+					   PUBLIC function updatecopy($id,Request $request)
+					   {
+                         DB::table('books')->where('id'.$id)->update(['quantity' => $reuest->quantity, 
+                                                                      'available'=> $request->available]);
+                         return redirect('/booklist');
 
 					   }
 
 
-					   //---------Status redirect page-----------------//
+	//-----------------------------Status redirect page----------------------------------//
 					   public function statusupdate($id)
 						    {
 						    	//dd($id); 		
@@ -87,12 +95,12 @@ class AdminController extends Controller
 			{			
 			 
 		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]);
-
-		      /*if(Issue::with('reserve')->where(['status'=>'C'])->get()){
+               
+		      if(Issue::with('reserve')->where(['status'=>'C'])->where('book_id','books.id')->get()){
 		        DB::table('books')->decrement('available',1);	
 		      }elseif(Issue::with('reserve')->where(['status'=>'C'])->get()){
                 DB::table('books')->increment('available',1);
-		          }*/ 
+		          } 
 		      
 		       
 			  return redirect('/issuemonitor');   

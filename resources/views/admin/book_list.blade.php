@@ -37,7 +37,7 @@
 				<td><img src="{{$bookData->image}}" height="100px" width="100px" border="50%"></td>
 				<td>{{$bookData->author}}</td>
 				<td>{{$bookData->quantity}}</td>
-			<td><a href=""><font color="#445JJJ">Add Copy</font></a></td>
+			<td><a href="{{route('addcopy')}}"><font color="#445JJJ">Add Copy</font></a></td>
 				
 			</tr>
 			@endforeach

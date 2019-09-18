@@ -45,7 +45,7 @@ Route::post('/issueupdate/{id}','AdminController@issueupdate')->name('issueupdat
 Route::get('/statusupdate/{id}','AdminController@statusupdate')->name('statusupdate');
 Route::get('/main','AdminController@main')->name('main');
 Route::get('/member','AdminController@member')->name('member');
-Route::get('/addcopy/{id}','AdminController@addcopy')->name('addcopy');
+Route::get('/addcopy','AdminController@addcopy')->name('addcopy');
 //Route::get('/test','TestController@test')->name('test');
 //Route::post('/issueupdate','TestController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {
