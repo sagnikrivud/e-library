@@ -14,21 +14,22 @@
 <body>
 	<h2><font color="#RR3300">Update Your Copies And Avibility</font></h2>
 	<center>
-<form action="" method="post">
+<form action="{{route('updatecopy',$id)}}" method="post">
+	@csrf
 	<div class="form-group">
 		<label>Update Total Quantity</label>
 	<input type="text" name="quantity" value="" required="">
 	</div>
 	<div class="form-group">
 	<label>Update Avilible copies</label> 
-	<input type="text" name="quantity" value="" required="">
+	<input type="text" name="" value="" required="" readonly="">
     </div>
 <div class="button mt-2">
 	<button class="btn btn-info" type="submit" value="submit">Update</button>
 </div>
 </form>
 <div class="button mt-2">
-<form action="{{route('main')}}" method="get">
+<form action="{{route('booklist')}}" method="get">
 	<button class="btn btn-warning" type="submit" value="submit">Back</button>
 </form>
 </div>

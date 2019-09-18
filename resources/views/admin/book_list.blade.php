@@ -23,6 +23,7 @@
     </form>
 	<table class="table table-striped">
 		<thead>
+			<th>ID</th>
 			<th>Book</th>
 			<th>Look</th>
 			<th>Author</th>
@@ -32,7 +33,7 @@
 		<tbody>
 			@foreach($books as $bookData)
 			<tr>
-				
+				<td>{{$bookData->id}}</td>
 				<td>{{$bookData->name}}</td>
 				<td><img src="{{$bookData->image}}" height="100px" width="100px" border="50%"></td>
 				<td>{{$bookData->author}}</td>
