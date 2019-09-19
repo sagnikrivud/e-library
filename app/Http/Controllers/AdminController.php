@@ -73,6 +73,7 @@ class AdminController extends Controller
 					   PUBLIC function updatecopy($id,Request $request)
 					   {
                       DB::table('books')->where('id',$id)->increment('quantity',$request->quantity);
+                                  //     ->where('id',$id)->increment('available',$request->available);
                                                      //['available',$request->available]]);
                        //->increment('available',$request->available);            //update(['quantity' => $request->quantity, 'available'=> $request->available]);
                          /*DB::table('books')->where('id',$id)
@@ -102,11 +103,11 @@ class AdminController extends Controller
 			 
 		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]);
                
-		      if(Issue::with('reserve')->where(['status'=>'C'])->where('book_id','books.id')->get()){
+		      /*if(Issue::with('reserve')->where(['status'=>'C'])->where('book_id','books.id')->get()){
 		        DB::table('books')->decrement('available',1);	
 		      }elseif(Issue::with('reserve')->where(['status'=>'C'])->get()){
                 DB::table('books')->increment('available',1);
-		          } 
+		          }*/ 
 		      
 		       
 			  return redirect('/issuemonitor')->withSuccess('Updated..!');   

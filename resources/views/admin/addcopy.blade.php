@@ -22,7 +22,7 @@
 	</div>
 	<div class="form-group">
 	<label>Update Avilible copies</label> 
-	<input type="text" name="" value="" readonly="" placeholder="*same as Copy Number">
+	<input type="text" name="available" value="" readonly="" placeholder="*same as Copy Number">
     </div>
 <div class="button mt-2">
 	<button class="btn btn-info" type="submit" value="submit">Update</button>

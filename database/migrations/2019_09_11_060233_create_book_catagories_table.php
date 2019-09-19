@@ -17,6 +17,7 @@ class CreateBookCatagoriesTable extends Migration
             $table->increments('id');
           //  $table->integer('');
             $table->string('catagory');
+           // $table->
             $table->timestamps();
         });
     }

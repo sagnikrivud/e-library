@@ -19,6 +19,7 @@ class AjaxController extends Controller
        $data = DB::table('books')
          ->where('name', 'like', '%'.$query.'%')
          ->orWhere('author', 'like', '%'.$query.'%')
+         ->where('available','>', '5')
        //  ->orWhere('image','like','%'.$query.'%')
          ->orderBy('id', 'name')
          ->get();
@@ -27,6 +28,7 @@ class AjaxController extends Controller
       else
       {
        $data = DB::table('books')
+         ->where('available','>', '0')
          ->orderBy('id', 'name')
          ->get();
       }

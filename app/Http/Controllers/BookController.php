@@ -34,7 +34,7 @@ class BookController extends Controller
     $my_book = Issue::with('reserve','issue')->where('user_id',$user_id)->get()->toArray();
     //$issue_date = Issue::with('reserve','issue')->where('user_id',$user_id)->get()->created_at;
      //  echo "<pre>"; print_r($my_book);
- //   echo '<pre>';
+ 
    //     print_r($my_book);
      //   die;
        return view('book.books',['mybooks'=>$my_book]);
@@ -50,10 +50,11 @@ class BookController extends Controller
       $book_id        = $request->book_id;
       $issue->book_id = $book_id;
       $issue->save();
-
+      Book::where('id',$book_id)->decrement('available',1);
+      // DB::table('books')->decrement('available',1);
     //  dd($issue);
    //   flash()->success('Success', 'Request send to Admin Successfully.');
-      return redirect('/mybook')->with('You have done successfully');
+      return redirect('/mybook')->withSuccess('You have done successfully');
 
     }
      
@@ -61,9 +62,9 @@ class BookController extends Controller
     public function printPDF()
     {
        // This  $data array will be passed to View blade      
-        $data = [ 'title' =>   'E library facility',          
-                  'heading' => 'Your Assigned Book',          
-                  'content' => ''        
+        $data = [ 'title'   =>   'E library facility',          
+                  'heading' => '<h2>Your Assigned Book</h2>',          
+                  'content' =>   $assign       
                 ];
         
         $pdf = PDF::loadView('pdf_view', $data);  
