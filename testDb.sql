@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 17, 2019 at 04:01 PM
+-- Generation Time: Sep 19, 2019 at 06:47 PM
 -- Server version: 5.7.26-0ubuntu0.16.04.1
 -- PHP Version: 7.2.20-1+ubuntu16.04.1+deb.sury.org+1
 
@@ -35,6 +35,7 @@ CREATE TABLE `books` (
   `quantity` varchar(150) NOT NULL,
   `image` varchar(150) DEFAULT NULL,
   `cat_id` int(155) DEFAULT NULL,
+  `available` varchar(15) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,24 +44,11 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `name`, `author`, `quantity`, `image`, `cat_id`, `created_at`, `updated_at`) VALUES
-(1, 'Harry Potter', 'JK r', '8', '/Images/hp.jpg', 1, '2019-09-18 01:00:12', '2019-09-01 00:53:25'),
-(2, 'Take', 'Mr. Q', '4', 'Images/take.jpg', 5, NULL, NULL),
-(3, 'A night to remember', 'Walter Lord', '6', 'Images/titanik.jpg', 2, NULL, NULL),
-(4, 'Posiedon', 'Anna Banks', '10', 'Images/posidon.jpg', 2, NULL, NULL),
-(5, 'Black Forest', 'Livingstone', '5', 'Images/black forest.jpg', 1, NULL, NULL),
-(6, 'Legend Of the peacock Throne ', 'C. Emella', '7', 'Images/pecock.jpg', 4, NULL, NULL),
-(7, 'The haunted Tour', 'James A. jeff', '6', 'Images/haunted.jpg', 1, NULL, NULL),
-(8, 'The Killer trap', 'K.R. Hill', '10', 'Images/killer.jpg', 3, NULL, NULL),
-(9, 'The Lie', 'C. L. Taylor', '6', 'Images/lie.jpg', 3, NULL, NULL),
-(10, 'Dracula', 'Bram Stroker', '7', 'Images/drakula.jpg', 1, NULL, NULL),
-(14, 'hello', 'jk', '3', NULL, NULL, '2019-09-13 07:38:06', '2019-09-13 07:38:06'),
-(15, 'Gidzilla', 'Eric powell', '3', '/tmp/phpquNUmu', NULL, '2019-09-15 23:45:34', '2019-09-15 23:45:34'),
-(16, 'The House', 'frank Peritti', '5', 'Images/House.jpg', 2, '2019-09-18 06:02:26', '2019-09-15 04:50:22'),
-(17, 'Chokher Bali', 'Rabindra Nath Tagore', '10', 'Images/chokherbali.jpg', 2, '2019-09-07 22:47:15', '2019-09-01 00:44:16'),
-(18, 'Roktokorobee', 'Rabindra Nath Tagore', '6', 'Images/roktokorobee.jpg', 2, '2019-09-07 23:44:15', '2019-09-14 23:44:16'),
-(19, 'Meghnad Bodh Kabbo', 'Mikel Madhusudan Datta', '5', 'Images/meghnadbodh.jpg', NULL, '2019-09-21 21:41:14', '2019-09-01 07:40:16'),
-(20, 'Jurrassic Park', 'Michel Crikton', '4', '/Images/8166938bd0912c7c7e366af053374a96.jpg', NULL, '2019-09-17 03:53:45', '2019-09-17 03:53:45');
+INSERT INTO `books` (`id`, `name`, `author`, `quantity`, `image`, `cat_id`, `available`, `created_at`, `updated_at`) VALUES
+(1, 'Harry potter', 'Jk R', '12', '/Images/ImageHandler.ashx.jpeg', NULL, '12', '2019-09-19 03:52:18', '2019-09-19 06:25:32'),
+(2, 'Annebela', 's.g', '10', '/Images/0883929646449_p0_v4_s550x406.jpg', NULL, '9', '2019-09-19 03:56:00', '2019-09-19 07:45:13'),
+(3, 'seventh ward', 's.g', '10', '/Images/51f2lcbQWOL.jpg', NULL, '10', '2019-09-19 05:28:38', '2019-09-19 07:34:30'),
+(4, 'Godzila', 'Eric powell', '2', '/Images/9781613774571_p0_v1_s550x406.jpg', NULL, '2', '2019-09-19 06:57:05', '2019-09-19 06:58:23');
 
 -- --------------------------------------------------------
 
@@ -74,17 +62,6 @@ CREATE TABLE `book_catagories` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `book_catagories`
---
-
-INSERT INTO `book_catagories` (`id`, `catagory`, `created_at`, `updated_at`) VALUES
-(1, 'Haunted', '2019-09-18 08:54:25', NULL),
-(2, 'Adventure', '2019-09-18 08:58:41', NULL),
-(3, 'Detective', '2019-09-18 08:47:38', NULL),
-(4, 'history', '2019-09-20 09:15:43', NULL),
-(5, 'entertainment', '2019-09-01 04:04:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -112,8 +89,8 @@ CREATE TABLE `issues` (
   `user_id` int(155) DEFAULT NULL,
   `book_id` int(155) DEFAULT NULL,
   `status` enum('A','I','C','D','F') DEFAULT 'I',
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -121,21 +98,11 @@ CREATE TABLE `issues` (
 --
 
 INSERT INTO `issues` (`id`, `user_id`, `book_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 4, 1, 'D', '2019-09-16 12:01:50', NULL),
-(9, 4, 6, 'D', '2019-09-16 12:01:55', '2019-09-09 23:50:39'),
-(10, 4, 6, 'D', '2019-09-17 06:05:34', '2019-09-09 23:52:26'),
-(13, 4, 7, 'D', '2019-09-16 12:55:50', '2019-09-10 05:45:51'),
-(14, 4, 2, 'D', '2019-09-16 12:55:39', '2019-09-10 07:49:33'),
-(15, 4, 2, 'F', '2019-09-11 07:25:33', '2019-09-10 23:34:14'),
-(16, 4, 8, 'F', '2019-09-16 13:00:23', '2019-09-11 00:23:09'),
-(17, 4, 3, 'F', '2019-09-16 12:17:05', '2019-09-12 02:27:53'),
-(18, 4, 8, 'F', '2019-09-16 12:09:36', '2019-09-12 03:16:34'),
-(19, 4, 8, 'F', '2019-09-16 12:09:46', '2019-09-12 03:22:19'),
-(20, 4, 9, 'D', '2019-09-17 09:07:18', '2019-09-12 03:24:06'),
-(22, 4, 8, 'F', '2019-09-16 12:09:55', '2019-09-12 03:47:07'),
-(23, 4, 10, 'A', '2019-09-16 12:02:30', '2019-09-13 05:14:41'),
-(24, 8, 4, 'C', '2019-09-17 07:36:14', '2019-09-16 00:09:22'),
-(25, 4, 17, 'I', '2019-09-17 02:30:16', '2019-09-17 02:30:16');
+(2, 6, 3, 'D', '2019-09-19 06:50:04', '2019-09-21 12:22:52'),
+(3, 7, 4, 'I', '2019-09-19 06:57:40', '2019-09-19 06:57:40'),
+(4, 8, 4, 'I', '2019-09-19 06:58:23', '2019-09-19 06:58:23'),
+(5, 6, 3, 'I', '2019-09-19 07:34:30', '2019-09-19 07:34:30'),
+(6, 6, 2, 'I', '2019-09-19 07:45:13', '2019-09-19 07:45:13');
 
 -- --------------------------------------------------------
 
@@ -196,13 +163,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `image`, `verified`, `password`, `roles`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 'test', 'test@mail.com', '90564545514', '/Images/male.jpg', 1, '$2y$10$O66saCyUpiCd8KE.pflt..9vQ2Cf28E7vaoJdRVl/6Yu6.afQBi0i', '1', 'jvZdeNjPz9TLejd6G2GEI23flkEoQmM6fyrts0fc0m6q2HZ3ntDT2qM2IXtd', '2019-09-05 07:11:17', '2019-09-17 02:11:55'),
-(5, 'sagnik', 'sagnik@unifiedinfotech.net', '90001115', '/Images/marguerite-daisy-beautiful-beauty.jpg', 1, '$2y$10$3fLZ.1fRWWKINuKEDbR.MublQGHmFmLwc4c/9/D..IhMCYjDD5YUu', '2', 'G31DbN9OMiirLdcUZhPHmdG5EuXi4TNF4Ln3hRmnsFXYSzk0zIzhnPLcrwoG', '2019-09-05 07:42:40', '2019-09-12 04:01:23'),
-(6, 'test@mail.com', 'test2@mail.com', '87765778', NULL, 0, '$2y$10$6BSFP7j03gdRB9dHqJu3yOBhrjnk/KlQ59X6oMm/sWGnQh0MNSzDG', '', 'SsHnlWDE3R5xKelrH1fLHzhrppCSrLdS5dxelsx4qAmIaDXUIKAbvL5mlvgz', '2019-09-10 23:21:49', '2019-09-10 23:21:49'),
-(7, 'Liza', 'liza@unifiedinfotech.net', '90888370', NULL, 0, '$2y$10$mtzlnRhwYl.Cfph6P0xfb.18qXgaf3gnpAwRhVQWAI0zoo4NTBd8G', '2', 'lh22U5AgDGX3MpjKO2Rcbvk49KxSBUZ35NmYCCbK1JwoajoZPy1uW59YfGix', '2019-09-16 00:03:45', '2019-09-16 00:03:45'),
-(8, 'Liza', 'lisa@unifiedinfotech.net', '980655676', '/Images/female.jpg', 1, '$2y$10$LJ6y5x6CuHxVmtDZV1k5TuMHi1BLALdD55EtHIYSCI4aSW4O3Fw4y', '2', 'ihn4QCxDXqb6rMAAy1TTId0wXeFNLduLk6XDeBZDzFj1vKhL5Y8P5fnZMesC', '2019-09-16 00:07:07', '2019-09-16 00:09:10'),
-(9, 'hgd', 'fgf@mail.com', '847879849', NULL, 0, '$2y$10$23bWe1zBEBvtEh0tNVSjUO9ELYlATyfjJZ.YX4nyYneW6aArnX0Bq', '2', 'R7y7WYcp6HHA7dJuz9gbe1fDUcwEoUh3JseH0dVyCX8HVl76vhGjMkOTlKJI', '2019-09-17 01:54:51', '2019-09-17 01:54:51'),
-(10, 'sd', 'sd@gmail.com', '234434344', NULL, 0, '$2y$10$ww08xMALAROpm7jmr4j.ZOTCeBNZFnu9p4KoI0UxUP7PAQhUJC.QC', '2', 'acZICpjMuwByf1bXuVl9b4hwNrXRZOrtFsxkqHAzlLlLsEsxTSBOElvI5RdR', '2019-09-17 02:25:05', '2019-09-17 02:25:05');
+(1, 'test', 'test@mail.com', '9000000', NULL, 1, '$2y$10$E6e1EEYhOSRCCW7UH8v6wOkIVZAxDCUhC0JioauAoJ8/qUqSGXFxy', '1', '7FH1Td7WgeP3YCl6Wx1a8ORbZa7AQgG3pdZG98y2aDwktALq4w5MqNQ7kxap', '2019-09-19 03:30:04', '2019-09-19 03:30:04'),
+(6, 'sagnik', 'sagnikcoold@gmail.com', '9077786676', NULL, 1, '$2y$10$Aup0UUdpHZcFLtorefJckOrlBC3aRypmh.g1CDauA6ux5R3tCBjqG', '2', 'FzuOMqabNlX97RYYRNu3cR0QbiVQjKej8iuOgp4GvYfzgIrY85ZkLjGfLXMf', '2019-09-19 04:31:54', '2019-09-19 04:31:54'),
+(7, 'Lisa', 'lisa@unifiedinfotech.net', '9088226300', NULL, 0, '$2y$10$a/gT1RO75fIS0EJPd0ID2.56M6Z6/PkRi8uPbbWsf53qQyYyw/JMK', '2', 'j4YZZYjrE6xq7EUBekxg20u14uefudDBSDwZx8CjduYB3WgJggnQle5xyNDm', '2019-09-19 05:12:20', '2019-09-19 05:12:20'),
+(8, 'test2', 'trashsng@gmail.com', '9088811189', NULL, 1, '$2y$10$0DN1i5ijK6Q38BIkOH9nc.K0V5g2zwn8j747vZcDSseMf28iU7OUu', '2', '4FvwILxJF8AT7agr31XP96DZuaKbDL4xDVUMfPWL6V2KYFeNmYuKpwXRzR3r', '2019-09-19 05:34:10', '2019-09-19 05:34:10');
 
 -- --------------------------------------------------------
 
@@ -223,15 +187,14 @@ CREATE TABLE `verify_users` (
 --
 
 INSERT INTO `verify_users` (`id`, `user_id`, `token`, `created_at`, `updated_at`) VALUES
-(1, 2, 'sR24geEscPpRSE0vxc0La3vik7rEa6rug8I82AYU', '2019-09-05 06:29:45', '2019-09-05 06:29:45'),
-(2, 3, 'Zi8CJ5jhL7yhOooL4hpQPOepNNnR7n5wZyKYxGuf', '2019-09-05 06:33:49', '2019-09-05 06:33:49'),
-(3, 4, 'vjRFZdnh2DZSAv85MzU4NwSnseMYrOL54Rvq9GhF', '2019-09-05 07:11:17', '2019-09-05 07:11:17'),
-(4, 5, 'hFtUkBdJjVrTTi2W3JugUerRGcF81ZQXun3m7giq', '2019-09-05 07:42:40', '2019-09-05 07:42:40'),
-(5, 6, 'Zy7fogCtFwgUpgj7JloiukeZowEs7IVZoTIH8e4j', '2019-09-10 23:21:49', '2019-09-10 23:21:49'),
-(6, 7, '9rPr9G3bCXufa6BWxc5QMZ9Iv4H4Yo2jMo1zoQhH', '2019-09-16 00:03:45', '2019-09-16 00:03:45'),
-(7, 8, '90cJdNlx1daxOA9bdPbrVoiGMi9YtqnODpnV6CSS', '2019-09-16 00:07:07', '2019-09-16 00:07:07'),
-(8, 9, 'h9kmmcuFu1FmvPJnQ8DlhoRWvgI3rgv9OWuGcrhp', '2019-09-17 01:54:51', '2019-09-17 01:54:51'),
-(9, 10, 'XdiR487H0DSRceAeVSMMS1a6iRaC0uO85PmNhlUC', '2019-09-17 02:25:05', '2019-09-17 02:25:05');
+(1, 1, 'Th7p363GWnpqRyX4ZLzShicv8lqW3n5Vf3Mktle3', '2019-09-19 03:30:04', '2019-09-19 03:30:04'),
+(2, 2, 'Y94cXyMHmL1NL77uQvDEQHXcbLA5ou8DoDmsk9Gt', '2019-09-19 04:07:14', '2019-09-19 04:07:14'),
+(3, 3, 'ArBrjBTmQQ3386Mc0spyEpQHDlsjLny0IyuqaGbz', '2019-09-19 04:25:58', '2019-09-19 04:25:58'),
+(4, 4, '0qN6E0dIFEVC1sy6Exwg3kdIJhkGplHkPOolwUCz', '2019-09-19 04:28:09', '2019-09-19 04:28:09'),
+(5, 5, '9qTmx0CMZ0fTJ1ocGvS9JGAtgKa50GaT0qFuMUWi', '2019-09-19 04:30:45', '2019-09-19 04:30:45'),
+(6, 6, 'sYsGZhKMBc1F0vD7nCSe62dKFKuscfRD1xgTzbCR', '2019-09-19 04:31:54', '2019-09-19 04:31:54'),
+(7, 7, 'jRtmMWGmWiPr0SVwvOfeWU4vpEXEAyM6MQJv5r4J', '2019-09-19 05:12:20', '2019-09-19 05:12:20'),
+(8, 8, 'a0rtaTVdLmNWu8MVqsx6P7fEEyu3vMuXODLttWUF', '2019-09-19 05:34:10', '2019-09-19 05:34:10');
 
 --
 -- Indexes for dumped tables
@@ -294,13 +257,13 @@ ALTER TABLE `verify_users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `book_catagories`
 --
 ALTER TABLE `book_catagories`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -312,7 +275,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(155) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -324,13 +287,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `verify_users`
 --
 ALTER TABLE `verify_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

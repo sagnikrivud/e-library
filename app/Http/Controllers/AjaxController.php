@@ -108,6 +108,8 @@ class AjaxController extends Controller
         $user->save();
 
    } */
+
+   //--------------------Book Avlibilit check-----------------------//
 }
 //<td>'.$row-><img src="Images/" height="42" width="42"> .'</td>
 //<img src="{{URL::to($row->image)}}" height="80px" width="80px">

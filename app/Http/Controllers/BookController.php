@@ -51,9 +51,9 @@ class BookController extends Controller
       $issue->book_id = $book_id;
       $issue->save();
       Book::where('id',$book_id)->decrement('available',1);
-      // DB::table('books')->decrement('available',1);
+   
     //  dd($issue);
-   //   flash()->success('Success', 'Request send to Admin Successfully.');
+   
       return redirect('/mybook')->withSuccess('You have done successfully');
 
     }
