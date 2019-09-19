@@ -48,7 +48,7 @@
                             <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Contact') }}</label>
 
                             <div class="col-md-6">
-                                <input id="mobile" type="number" class="form-control" name="mobile" required>
+                                <input id="mobile" type="text" class="form-control1" name="mobile" required>
                             </div>
                         </div>
 
@@ -135,7 +135,7 @@ $(document).ready(function(){
             console.log(result);
      if(result == 'unique')
      {
-      $('#error_email1').html('<label class="text-success">Email Available</label>');
+      $('#error_email1').html('<label class="text-success">Welcome...!</label>');
       $('#email').removeClass('has-error');
       $('#register').attr('disabled', false);
      }
@@ -154,6 +154,57 @@ $(document).ready(function(){
   }
  });
  
+});
+</script>
+<!-- -------------------------- -->
+<script type="text/javascript">
+  $(document).ready(function(){
+
+$("#mobile").change(function() { 
+
+var usrN = $("#mobile").val();
+
+if(usrN.length >= 4)
+{
+$("#statuspass").html('<img src="Images/loading.gif"> Checking ...');
+
+    $.ajax({  
+    type: "POST",  
+     url :  "{{route('contctcheck')}}" , 
+    data: "mobile="+ usrN, 
+    success: function(msg){  
+   
+   $("#statuspass").ajaxComplete(function(event, request, settings){ 
+
+    if(msg == 'OK')
+    { 
+        $("#mobile").removeClass('object_error'); 
+        $("#mobile").addClass("object_ok");
+        $(this).html('<img src="Images/success.png" align="absmiddle"> OK<');
+    }  
+    else  
+    {  
+        $("#mobile").removeClass('object_ok'); 
+        $("#mobile").addClass("object_error");
+        $(this).html(msg);
+    }  
+   
+   });
+
+ } 
+   
+  }); 
+
+}
+else
+    {
+    $("#statuspass").html('<font color="red" style="margin-left:125px;">Already Used<strong></strong> .</font>');
+    $("#name").removeClass('object_ok'); 
+    $("#name").addClass("object_error");
+    }
+
+});
+
 });
 </script>
  

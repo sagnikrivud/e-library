@@ -19,7 +19,7 @@ class AjaxController extends Controller
        $data = DB::table('books')
          ->where('name', 'like', '%'.$query.'%')
          ->orWhere('author', 'like', '%'.$query.'%')
-         ->where('available','>', '5')
+         
        //  ->orWhere('image','like','%'.$query.'%')
          ->orderBy('id', 'name')
          ->get();
@@ -86,6 +86,28 @@ class AjaxController extends Controller
       }
      }
     }
+   //-----------------Contact Check------------------//
+   /*public function contctcheck()
+   {
+
+        $user= new User;  
+        $mobile = $request->get('mobile');  
+        $mobile->mobile = $request->get('mobile');
+      
+
+        $query = DB::table('users')
+                  ->select('mobile')
+                  ->where('mobile','!=',$mobile)
+                  ->get();
+            if($query)
+            {
+                return"New Contact";
+            }
+                return "This Contact already is being used";
+       //......
+        $user->save();
+
+   } */
 }
 //<td>'.$row-><img src="Images/" height="42" width="42"> .'</td>
 //<img src="{{URL::to($row->image)}}" height="80px" width="80px">

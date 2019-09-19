@@ -61,7 +61,7 @@ class AdminController extends Controller
 					        $book ->save();
 
 
-					        return "success";
+					        return redirect('/booklist');
 					   } 
     //-------------------------Add Copy-----------------------------//
 					   public function addcopy($id)

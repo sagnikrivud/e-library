@@ -80,7 +80,7 @@
     <table class="table table-bordered">
     	<thead>
     		<tr>
-    			<th>Issue Date</th>
+    			<th>Request Date</th>
     			<th>Book</th>
                 <th></th>
     			<th>Status</th>

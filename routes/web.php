@@ -32,7 +32,8 @@ Route::post('/booksubmit','BookController@booksubmit')->name('booksubmit');
 Route::post('/check', 'AjaxController@check')->name('check');
 Route::post('/mymail','HomeController@mymail')->name('mymail');
 Route::get('/manual','HomeController@manual')->name('manual');
-Route::post('/authenticated','Auth\LoginController@authenticated');
+//Route::post('/authenticated','Auth\LoginController@authenticated');
+Route::post('/authenticate','Auth\LoginController@authenticate');
 //Route::get('booksubmit','IssueController@booksubmit')->name('booksubmit');
 //----------------------Admin Routes-----------------------------------//
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
@@ -47,6 +48,7 @@ Route::get('/main','AdminController@main')->name('main');
 Route::get('/member','AdminController@member')->name('member');
 Route::get('/addcopy/{id}','AdminController@addcopy')->name('addcopy');
 Route::post('updatecopy/{id}','AdminController@updatecopy')->name('updatecopy');
+Route::post('/contctcheck','AjaxController@contctcheck')->name('contctcheck');
 //Route::get('/test','TestController@test')->name('test');
 //Route::post('/issueupdate','TestController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {

@@ -46,7 +46,7 @@
 			@foreach ($issues as $issue)
 			
 
-			<tr class="disabled">
+			<tr class="disabled">                                         <!-- ** -->
 				<td>{{$issue['id']}}</td>
 				<td>{{$issue['issue']['name']}}</td>
 				

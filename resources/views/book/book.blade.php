@@ -148,7 +148,7 @@ button{
 
 <center>
 <div class="col-md-4">
-      <input type="text" name="search" id="search" class="form-control" placeholder="Search Book" />
+      <input type="text" name="search" id="search" class="form-control" placeholder="Search Bookusing Book name/ Author" />
      </div>
 </center>
 
