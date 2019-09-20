@@ -100,18 +100,33 @@ class AdminController extends Controller
   
 			  //---------------------Update Issue status----------------//
 			public function issueupdate($id,Request $request)
-			{			
+			{	
+
 			 
 		      DB::table('issues')->where('id',$id)->update(['status' => $request->status]);
-               
-		      /*if(Issue::with('reserve')->where(['status'=>'C'])->where('book_id','books.id')->get()){
-		        DB::table('books')->decrement('available',1);	
-		      }elseif(Issue::with('reserve')->where(['status'=>'C'])->get()){
-                DB::table('books')->increment('available',1);
-		          }*/ 
-		      
+            $result = DB::table('issues')->where('id',$id)->get(['status'])->toArray();
+            $m      = $result[0];
+            $status = $m->status;
+          //  print_r($status);
+           // die;
+            if($status=='D'){
+
+              $book_id_result= DB::table('issues')->where('id',$id)->get(['book_id'])->toArray();
+              $x  = $book_id_result[0];
+              $book_id  = $x->book_id;    
+              DB::table('books')->where('id',$book_id)->increment('available',1); 
+              return redirect('/issuemonitor')->withSuccess('Updated..!'); 
+             // print_r($book_id);
+
+            }else{
+             
+            return redirect('/issuemonitor')->withSuccess('Updated..!');      
+            }
+              //print the bookid---------//
+              
+              
 		       
-			  return redirect('/issuemonitor')->withSuccess('Updated..!');   
+			 // return redirect('/issuemonitor')->withSuccess('Updated..!');   
 			}
 
        //-------------Inform User about return Book----------------------//
@@ -127,7 +142,15 @@ class AdminController extends Controller
     	$user = User::where(['verified'=>1,'roles'=>2])->get();
         //dd($user);
     	return view('admin.member',['users' => $user]);
-    }			   
+    }	
+
+    /*public function check()
+    {
+      $result = DB::table('issues')->where('id',$id)->get(['status']);
+     // echo "<pre>";
+     // print_r($result);
+       dd($result);   
+    }*/		   
 
 
 

@@ -56,6 +56,12 @@ button:hover, a:hover {
   opacity: 0.7;
 }
                             </style>
+                            <script type="text/javascript">
+                             //  window.history.forward();
+                  function noBack() { 
+                  window.history.forward(); 
+             }
+                            </script>
 <body background="Images/prof.jpg"></body>
 
 <div class="container">
