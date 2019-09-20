@@ -124,9 +124,8 @@ class AdminController extends Controller
         //----------------------------Member List---------------------------------//
     public function member()
     {
-    	$user = DB::table('users')->where(['verified'=>1,'roles'=>2])->get();
-    	//$user = Auth::user()->where(['verified'=>1,'roles'=>2])->get();
-    	//dd($user);
+    	$user = User::where(['verified'=>1,'roles'=>2])->get();
+        //dd($user);
     	return view('admin.member',['users' => $user]);
     }			   
 

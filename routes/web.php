@@ -32,6 +32,7 @@ Route::post('/booksubmit','BookController@booksubmit')->name('booksubmit');
 Route::post('/check', 'AjaxController@check')->name('check');
 Route::post('/mymail','HomeController@mymail')->name('mymail');
 Route::get('/manual','HomeController@manual')->name('manual');
+Route::get('/error','BookController@error')->name('error');
 //Route::post('/avilibility','AjaxController@avilibility')->name('avilibility');
 //Route::post('/authenticated','Auth\LoginController@authenticated');
 Route::post('/authenticate','Auth\LoginController@authenticate');

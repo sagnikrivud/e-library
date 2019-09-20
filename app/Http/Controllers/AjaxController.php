@@ -110,22 +110,41 @@ class AjaxController extends Controller
    } */
 
    //--------------------Book Avlibility check-----------------------//
-   /*public function avilibility()
+   /*public function booksubmit(Request $request)
    {
   
     $number = Book::where('id',$id)->select('available')->get();
 
-    if (count($number)'>'0){
+    if (count($number)'>'0)
+    {
 
-      echo 'success';
+      $issue = new Issue;
+      $issue->user_id = Auth::user()->id;
+      //$issue->book_id = Book::get()->id;
+      $book_id        = $request->book_id;
+      $issue->book_id = $book_id;
+      $issue->save();
+      Book::where('id',$book_id)->decrement('available',1);
+   
+    
+   
+      return redirect('/mybook')->withSuccess('You have done successfully');
      
     }else{
 
-      echo  'error';
+      return redirect('/error');
 
          }
 
    }*/
+
+
+   /*public functiion error()
+   {
+       return view('user.error');
+
+   }*/
+   //---------------------------------------------------------------------------//
 }
 //<td>'.$row-><img src="Images/" height="42" width="42"> .'</td>
 //<img src="{{URL::to($row->image)}}" height="80px" width="80px">
