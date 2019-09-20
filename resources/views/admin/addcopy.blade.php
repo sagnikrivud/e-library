@@ -18,11 +18,11 @@
 	@csrf
 	<div class="form-group">
 		<label>Update Total Quantity</label>
-	<input type="text" name="quantity" value="" id="tbNumbers" onkeypress="javascript:return isNumber(event)" placeholder="*Only Numbers" required="" >
+	<input type="text" name="quantity" value="" id="tbNumbers" onkeypress="javascript:return isNumber(event)" placeholder="*Only Numbers"  required="" >
 	</div>
 	<div class="form-group">
 	<label>Update Avilible copies</label> 
-	<input type="text" name="available" value="" readonly="" placeholder="*same as Copy Number">
+	<input type="text" name="available" value="" id="avl" onkeypress="javascript:return isNumber(event)" placeholder="*same as Copy Number">
     </div>
 <div class="button mt-2">
 	<button class="btn btn-info" type="submit" value="submit">Update</button>
@@ -44,5 +44,18 @@
 
         return true;
     }    
+</script>
+<!-- --------------------------- -->
+<script type="text/javascript">
+	$(document).ready(function () {
+
+        function onchange() {
+            //Since you have JQuery, why aren't you using it?
+            var tbNumbers = $('#tbNumbers');
+            var avl = $('#avl');
+            avl.val(tbNumbers.val());
+        }
+        $('#tbNumbers').on('change', onchange);
+    });
 </script>
 </html>

@@ -72,7 +72,8 @@ class AdminController extends Controller
 //----------------------------------------------------------------------------------//
 					   PUBLIC function updatecopy($id,Request $request)
 					   {
-                      DB::table('books')->where('id',$id)->increment('quantity',$request->quantity);
+                    DB::table('books')->where('id',$id)->increment('quantity',$request->quantity);
+                  DB::table('books')->where('id',$id)->increment('available',$request->available);                  
                                   //     ->where('id',$id)->increment('available',$request->available);
                                                      //['available',$request->available]]);
                        //->increment('available',$request->available);            //update(['quantity' => $request->quantity, 'available'=> $request->available]);

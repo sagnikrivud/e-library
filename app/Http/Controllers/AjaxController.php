@@ -109,7 +109,23 @@ class AjaxController extends Controller
 
    } */
 
-   //--------------------Book Avlibilit check-----------------------//
+   //--------------------Book Avlibility check-----------------------//
+   /*public function avilibility()
+   {
+  
+    $number = Book::where('id',$id)->select('available')->get();
+
+    if (count($number)'>'0){
+
+      echo 'success';
+     
+    }else{
+
+      echo  'error';
+
+         }
+
+   }*/
 }
 //<td>'.$row-><img src="Images/" height="42" width="42"> .'</td>
 //<img src="{{URL::to($row->image)}}" height="80px" width="80px">
