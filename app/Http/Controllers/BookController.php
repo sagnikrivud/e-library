@@ -55,7 +55,7 @@ class BookController extends Controller
                   $result = Book::where('id',$id)->get(['available'])->toArray();
                   $x         = $result[0];       //Braek the inner array
                   $available = $x['available'];  // take the vallue from element of an inner array
-               //   print_r($available);
+             
 
                   if ($available>0)
                   {

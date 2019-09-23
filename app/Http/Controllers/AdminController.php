@@ -25,7 +25,6 @@ class AdminController extends Controller
      {  
      	$user_id = User::all(); 
      	$book_id = Book::all();
-     	//$issue   = Issue::all(); //->with('issue','reserve')->get();
      	$issue   = Issue::with('issue','reserve')->get()->toArray();
      //	dd($issue);
      //	echo "<pre>";
@@ -47,17 +46,17 @@ class AdminController extends Controller
 					   }  
 					   public function add(Request $request)   //Store / Add Book
 					   {
-					    	$book = new Book();
+					    	  $book = new Book();
 
 					        $book ->name     =  $request->input('name');
 					        $book ->quantity =  $request->input('quantity');
 					        $book ->author   =  $request->input('author');
-					        
+					        //Insert Image//
 					        $image           =  $request->image;
 					        $pic             =  $image->getClientOriginalName();
 					        $image->move(public_path("Images"), $pic);
 					        $path            = '/Images/'.$pic;
-                            $book ->image    =  $path;
+                  $book ->image    =  $path;
 					        $book ->save();
 
 
@@ -72,8 +71,8 @@ class AdminController extends Controller
 //----------------------------------------------------------------------------------//
 					   PUBLIC function updatecopy($id,Request $request)
 					   {
-                    DB::table('books')->where('id',$id)->increment('quantity',$request->quantity);
-                  DB::table('books')->where('id',$id)->increment('available',$request->available);                  
+                    Book::where('id',$id)->increment('quantity',$request->quantity);
+                  Book::where('id',$id)->increment('available',$request->available);                  
                                   //     ->where('id',$id)->increment('available',$request->available);
                                                      //['available',$request->available]]);
                        //->increment('available',$request->available);            //update(['quantity' => $request->quantity, 'available'=> $request->available]);
@@ -90,10 +89,7 @@ class AdminController extends Controller
 	//-----------------------------Status redirect page----------------------------------//
 					   public function statusupdate($id)
 						    {
-						    	//dd($id); 		
-						      //$id  = $request->id;
-						     //$issue = Issue::with('issue','reserve')->get()->toArray();
-						    //  dd($issue);
+						    	
 						     return view('admin.status')->with('id',$id);
 
 						    }
@@ -118,15 +114,22 @@ class AdminController extends Controller
               return redirect('/issuemonitor')->withSuccess('Updated..!'); 
              // print_r($book_id);
 
+            }elseif($status=='F'){
+              
+            $book_id_result= DB::table('issues')->where('id',$id)->get(['book_id'])->toArray();
+            $x  = $book_id_result[0];
+            $book_id  = $x->book_id;    
+            DB::table('books')->where('id',$book_id)->increment('available',1);  
+            return redirect('/issuemonitor')->withSuccess('Updated..!'); 
+
             }else{
-             
-            return redirect('/issuemonitor')->withSuccess('Updated..!');      
+
+              return redirect('/issuemonitor')->withSuccess('Updated..!');
             }
-              //print the bookid---------//
               
               
 		       
-			 // return redirect('/issuemonitor')->withSuccess('Updated..!');   
+			
 			}
 
        //-------------Inform User about return Book----------------------//
@@ -136,6 +139,7 @@ class AdminController extends Controller
 
                  
 			   }
+         
         //----------------------------Member List---------------------------------//
     public function member()
     {
@@ -144,13 +148,7 @@ class AdminController extends Controller
     	return view('admin.member',['users' => $user]);
     }	
 
-    /*public function check()
-    {
-      $result = DB::table('issues')->where('id',$id)->get(['status']);
-     // echo "<pre>";
-     // print_r($result);
-       dd($result);   
-    }*/		   
+   
 
 
 
