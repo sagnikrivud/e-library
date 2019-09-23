@@ -74,7 +74,7 @@
 		            <?php } ?> 
         		</td>
 	            <td>
-	            	<a href="/statusupdate/{{$issue['id']}}">Update Status</a>
+	            	<a href="/statusupdate/{{$issue['id']}}" >Update Status<?php if ($issue['status'] == 'D'){ ?> Disabled <?php   } ?></a>
 	            	<!-- <input type="hidden" name="id" value="{{$issue['id']}}" /> --></td>
 				</tr>
 			@endforeach

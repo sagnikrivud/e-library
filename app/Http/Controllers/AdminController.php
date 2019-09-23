@@ -122,7 +122,7 @@ class AdminController extends Controller
               $book_id_result= DB::table('issues')->where('id',$id)->get(['book_id'])->toArray();
               $x  = $book_id_result[0];
               $book_id  = $x->book_id;    
-              DB::table('books')->where('id',$book_id)->increment('available',1); 
+          //    DB::table('books')->where('id',$book_id)->increment('available',1); 
               //return redirect('/issuemonitor')->withSuccess('Updated..!');
                  //------------------Fine Calculation-----------------------//
               $take_date = Issue::where('id',$id)->get(['updated_at']);
@@ -146,11 +146,25 @@ class AdminController extends Controller
            //   die;  
               $days     = round($diif / (60 * 60 * 24));   // convert into day*
            //   print_r($days);
-           //   die;           
-              if($days>7){
-               $fine = $days*10;
+           //   die;  
+              $limit = DB::table('settings')->get(['reserve_period'])->toArray();
+            //  print_r($limit);
+             // die;
+              $n = $limit[0];
+            //  print_r($n);
+             // die;
+              $period = $n->reserve_period; 
+             //  print_r($period);
+             //  die;
+              if($days>$period){
+              $l = DB::table('settings')->get(['fine_amount'])->toArray();
+              $v = $l[0]; 
+              $amount = $v->fine_amount;
+            //  print_r($amount);
+            //  die;
+               $fine = $days*$amount;
            //   echo 'Your Caution money is',' ','Rupees',$fine,'/-';
-           return redirect('/fine')->with(['id'=>$id,'fine'=>$fine]);
+             return redirect('/fine')->with(['id'=>$id,'fine'=>$fine]);
               }else{
              return redirect('/issuemonitor')->withSuccess('Updated..!'); 
                           }
@@ -193,17 +207,18 @@ class AdminController extends Controller
  //------------------------------------Settings------------------------------------//
  
                              public function setting()
-                             {
-
-                              $setting = Setting::where('id',$id)->get();
-                              
-                              return view('admin.settings');
+                             {                            
+                            
+                             
+                             
+                              $setting = Setting::where('id',1)->get();
+                              return view('admin.settings',compact('setting'));
 
                              }
 
-                              public function settingupdate($id, Request $request)
+                              public function settingupdate(Request $request)
                               {
-                                 Setting::where('id',$id)->update([
+                                 Setting::where('id','1')->update([
                                    'reserve_period' => $request->reserve_period,
                                    'fine_amount'    => $request->fine_amount,
                                    'toggle'         => $request->toggle,

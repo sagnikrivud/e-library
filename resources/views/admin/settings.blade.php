@@ -16,7 +16,8 @@ button:hover{background:#78788c;color:#fff}
 div{content:'Hi';position:absolute;bottom:-15px;right:-20px;background:#50505a;color:#fff;width:320px;padding:16px 4px 16px 0;border-radius:6px;font-size:13px;box-shadow:10px 10px 40px -14px #000}
 span{margin:0 5px 0 15px}
 </style>
-<form class="form" action="" method="">
+<form class="form" action="{{route('settingupdate')}}" method="post">
+  @csrf
   <h2>SETTINGS</h2>
   <p type="Borrowing period:"><!-- <input placeholder="*1"></input> --> 
   	<select name="reserve_period">
@@ -27,7 +28,8 @@ span{margin:0 5px 0 15px}
     </select></p>
   <p type="Set-2:"><input name="fine_amount" placeholder="Penalty Amount : /-" onkeypress="javascript:return isNumber(event)"></input></p>
   <p type="Set-3:"><input placeholder="*3"></input></p>
-  <button>Save Setting</button>
+  <input type="hidden1" name="id" value="1">
+  <button type = "submit">Save Setting</button>
   <!-- <div>
     <span class="fa fa-phone"></span>001 1023 567
     <span class="fa fa-envelope-o"></span> contact@company.com

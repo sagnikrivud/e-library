@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,14 +9,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/about','Controller@about')->name('about');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 Route::get('/back','Controller@back')->name('back');
@@ -54,11 +50,10 @@ Route::post('updatecopy/{id}','AdminController@updatecopy')->name('updatecopy');
 Route::post('/contctcheck','AjaxController@contctcheck')->name('contctcheck');
 Route::get('/fine','AdminController@fine')->name('fine');
 Route::get('/setting','AdminController@setting')->name('setting');
+Route::post('/settingupdate','AdminController@settingupdate')->name('settingupdate');
 //Route::get('/test','TestController@test')->name('test');
 //Route::post('/issueupdate','TestController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return "Cache is cleared";
 });
-
-//Route::post('/book/search', 'BookController@search')->name('book.search');
