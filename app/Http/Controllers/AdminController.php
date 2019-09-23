@@ -8,6 +8,7 @@ use App\Book;
 use Illuminate\Http\Request;
 use DB;
 use DateTime;
+use App\Setting;
 
 class AdminController extends Controller
 {
@@ -95,6 +96,16 @@ class AdminController extends Controller
 
 						    }
   
+
+//--------------------------------Return to Fine page------------------------------//
+                            public function fine()
+                            {
+                               return view('admin.fine');
+
+                            }
+
+
+
 			  //---------------------Update Issue status----------------//
 			public function issueupdate($id,Request $request)
 			{	
@@ -138,11 +149,11 @@ class AdminController extends Controller
            //   die;           
               if($days>7){
                $fine = $days*10;
-               echo 'Your Caution money is',' ','Rupees',$fine,'/-';
-             // return redirect('/fine')->with(['id',$id,$id->$fine]);
+           //   echo 'Your Caution money is',' ','Rupees',$fine,'/-';
+           return redirect('/fine')->with(['id'=>$id,'fine'=>$fine]);
               }else{
-               return redirect('/issuemonitor')->withSuccess('Updated..!'); 
-              }
+             return redirect('/issuemonitor')->withSuccess('Updated..!'); 
+                          }
              
 
             }elseif($status=='F'){
@@ -155,7 +166,7 @@ class AdminController extends Controller
 
             }else{
 
-              return redirect('/issuemonitor')->withSuccess('Updated..!');
+            return redirect('/issuemonitor')->withSuccess('Updated..!');
             }
               
               
@@ -172,18 +183,36 @@ class AdminController extends Controller
 			   }
 
         //----------------------------Member List---------------------------------//
-    public function member()
-    {
-    	$user = User::where(['verified'=>1,'roles'=>2])->get();
-        //dd($user);
-    	return view('admin.member',['users' => $user]);
-    }	
+                      public function member()
+                      {
+                      	$user = User::where(['verified'=>1,'roles'=>2])->get();
+                          //dd($user);
+                      	return view('admin.member',['users' => $user]);
+                      }	
 
-    public function fine()
-    {
-       return view('admin.fine');
+ //------------------------------------Settings------------------------------------//
+ 
+                             public function setting()
+                             {
 
-    }
+                              $setting = Setting::where('id',$id)->get();
+                              
+                              return view('admin.settings');
+
+                             }
+
+                              public function settingupdate($id, Request $request)
+                              {
+                                 Setting::where('id',$id)->update([
+                                   'reserve_period' => $request->reserve_period,
+                                   'fine_amount'    => $request->fine_amount,
+                                   'toggle'         => $request->toggle,
+
+                                 ]);
+
+                              }
+
+  
 
    
 

@@ -52,6 +52,8 @@ Route::get('/member','AdminController@member')->name('member');
 Route::get('/addcopy/{id}','AdminController@addcopy')->name('addcopy');
 Route::post('updatecopy/{id}','AdminController@updatecopy')->name('updatecopy');
 Route::post('/contctcheck','AjaxController@contctcheck')->name('contctcheck');
+Route::get('/fine','AdminController@fine')->name('fine');
+Route::get('/setting','AdminController@setting')->name('setting');
 //Route::get('/test','TestController@test')->name('test');
 //Route::post('/issueupdate','TestController@issueupdate')->name('issueupdate');
 Route::get('/clear-cache', function() {

@@ -18,6 +18,13 @@
 		<center>
       <table>
         <td>
+  <div class="button mt-2">
+    <form action="{{route('setting')}}" method="get">
+      <button class="btn btn-secondary" type="submit" value="submit">Settings</button>
+    </form>
+  </div>
+</td>
+        <td>
 			<div class="button mt-2">
 <form action="{{route('issuemonitor')}}" method="get">
   <button class="btn btn-info" type="submit" value="submit">Issue-Monitor</button>
@@ -45,6 +52,7 @@
 </form>
 </div>
 </td>
+
 		</center>
     </table>
 	</div>
