@@ -7,6 +7,7 @@ use App\User;
 use App\Book;
 use Illuminate\Http\Request;
 use DB;
+use DateTime;
 
 class AdminController extends Controller
 {
@@ -111,8 +112,38 @@ class AdminController extends Controller
               $x  = $book_id_result[0];
               $book_id  = $x->book_id;    
               DB::table('books')->where('id',$book_id)->increment('available',1); 
-              return redirect('/issuemonitor')->withSuccess('Updated..!'); 
-             // print_r($book_id);
+              //return redirect('/issuemonitor')->withSuccess('Updated..!');
+                 //------------------Fine Calculation-----------------------//
+              $take_date = Issue::where('id',$id)->get(['updated_at']);
+              $result    = $take_date[0];
+            //  print_r($result);
+            //  die;
+              $date     = $result->updated_at->format('Y-m-d');  //pick date 
+              $date1    = strtotime($date);
+            //  $date1    = date($date);    
+              //$date1     = new DateTime($v);
+            //  print_r($date1);
+            // die;               
+              $date2     = date("Y-m-d");    // Current date
+              $date3     = strtotime($date2);   
+            // print_r($date2);
+            //  die;                         
+            //  $diif      = round(($date2-$date1)/(60 * 60 * 24));
+             // $diif        = date_diff($date2,$date1);
+              $diif    = abs($date3-$date1);
+           //   print_r($diif);
+           //   die;  
+              $days     = round($diif / (60 * 60 * 24));   // convert into day*
+           //   print_r($days);
+           //   die;           
+              if($days>7){
+               $fine = $days*10;
+               echo 'Your Caution money is',' ','Rupees',$fine,'/-';
+             // return redirect('/fine')->with(['id',$id,$id->$fine]);
+              }else{
+               return redirect('/issuemonitor')->withSuccess('Updated..!'); 
+              }
+             
 
             }elseif($status=='F'){
               
@@ -139,7 +170,7 @@ class AdminController extends Controller
 
                  
 			   }
-         
+
         //----------------------------Member List---------------------------------//
     public function member()
     {
@@ -147,6 +178,12 @@ class AdminController extends Controller
         //dd($user);
     	return view('admin.member',['users' => $user]);
     }	
+
+    public function fine()
+    {
+       return view('admin.fine');
+
+    }
 
    
 
