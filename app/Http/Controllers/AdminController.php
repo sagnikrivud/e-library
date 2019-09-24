@@ -122,8 +122,9 @@ class AdminController extends Controller
               $book_id_result= DB::table('issues')->where('id',$id)->get(['book_id'])->toArray();
               $x  = $book_id_result[0];
               $book_id  = $x->book_id;    
-          //    DB::table('books')->where('id',$book_id)->increment('available',1); 
+             DB::table('books')->where('id',$book_id)->increment('available',1); 
               //return redirect('/issuemonitor')->withSuccess('Updated..!');
+
                  //------------------Fine Calculation-----------------------//
               $take_date = Issue::where('id',$id)->get(['updated_at']);
               $result    = $take_date[0];
