@@ -32,6 +32,11 @@
     <button class="btn btn-success" type="submit" value="submit">Main</button>
   </form>
 </div>
+<div class="button mt-2">
+  <form action="{{route('home')}}" method="get">
+    <button class="btn btn-info" type="submit">Librery</button>
+  </form>
+</div>
 </center>
 </div>
 </div>

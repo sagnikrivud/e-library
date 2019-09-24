@@ -224,7 +224,8 @@ class AdminController extends Controller
                                    'toggle'         => $request->toggle,
 
                                  ]);
-
+                                 
+                                 return redirect('/main');   
                               }
 
   
