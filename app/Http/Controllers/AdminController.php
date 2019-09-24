@@ -166,7 +166,7 @@ class AdminController extends Controller
             //  print_r($amount);
             //  die;
               $fine = $days*$amount;
-            echo 'Your Caution money is',' ','Rupees',$fine,'/-';
+        //    echo 'Your Caution money is',' ','Rupees',$fine,'/-';
              return redirect('/fine')->with(['id'=>$id,'fine'=>$fine]);
               }else{
              return redirect('/issuemonitor')->withSuccess('Updated..!'); 
