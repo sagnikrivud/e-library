@@ -19,6 +19,7 @@ class AjaxController extends Controller
        $data = DB::table('books')
          ->where('name', 'like', '%'.$query.'%')
          ->orWhere('author', 'like', '%'.$query.'%')
+         ->orWhere('catagory','like','%'.$query.'%')
          
        //  ->orWhere('image','like','%'.$query.'%')
          ->orderBy('id', 'name')
@@ -43,6 +44,7 @@ class AjaxController extends Controller
 
          <td>'.$row->name.'</td>
          <td>'.$row->author.'</td>
+         <td>'.$row->catagory.'</td>
          <td>'.$row->available.'</td>
          <td><div id="app"><img width="100px" height="100px" src="'. $row->image.'"</div></td> 
          <td><button type="submit" name = "book_id" value = "'.$row->id.'">Request</button></td>

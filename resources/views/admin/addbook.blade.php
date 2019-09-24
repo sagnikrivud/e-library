@@ -781,6 +781,8 @@ input.checkbox:checked:after {
 					<input class="text" type="file" name="image">
 					<input class="text" type="text" name="name" placeholder="Book Name" required="">
 					<input class="text" type="text" name="quantity" placeholder="Number Of copies" required="">
+          <input  class="text" type="text"  name="available" placeholder="Available" required="">
+        <input  class="text" type="text"  name="catagory" placeholder="Book Catagory" required="">
 					<input class="text" type="text" name="author" placeholder="Author" required="">
 					
 					

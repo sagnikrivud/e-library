@@ -27,7 +27,7 @@ span{margin:0 5px 0 15px}
   	 <option value="12">12</option>             
     </select></p>
   <p type="Set-2:"><input name="fine_amount" placeholder="Penalty Amount : /-" onkeypress="javascript:return isNumber(event)"></input></p>
-  <p type="Set-3:"><input placeholder="*3"></input></p>
+  <p type="Set-3:"><input name="toggle" placeholder="*3"></input></p>
   <input type="hidden" name="id" value="1">
   <button type = "submit">Save Setting</button>
   <!-- <div>

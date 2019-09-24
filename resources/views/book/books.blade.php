@@ -9,19 +9,19 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body background="Images/mybook.jpg">
+<body>
 	<style type="text/css">
 		.content_box{
     float:left;
@@ -57,6 +57,11 @@
     border-bottom:1px solid #adcff7;
     color:#1276F0;
 }
+
+body {
+
+     background: #f7ffd9;
+     }
 
 .nav-tabs--vertical li a.active::after {
     content: "";
@@ -96,21 +101,21 @@
     			<td>{{$bookData['reserve'][0]['name']}}</td>
         <td><img src="{{$bookData['reserve'][0]['image']}}" height="100" width="100"></td>
     		   <td><?php if($bookData['status']=="A") { ?>
-            <span class="label label-info">Assigned</span>
+            <span class="badge badge-info">Assigned</span>
 
             <?php } else if($bookData['status']=="I")  { ?>
 
-            <span class="label label-danger">Not Assigned</span>
+            <span class="badge badge-danger">Not Assigned</span>
 
             <?php }else if ($bookData['status']=="C")  { ?>
 
-            <span class="label label-success">Confirmed</span>
+            <span class="badge badge-success">Confirmed</span>
 
             <?php }else if ($bookData['status']=="D")  { ?>
-            <span class="label label-warning">Returned</span>
+            <span class="badge badge-warning">Returned</span>
 
             <?php }else if ($bookData['status']=="F")  { ?>
-            <span class="label label-default">Failed</span>
+            <span class="badge badge-dark">Failed</span>
             <?php } ?></td>
     		</tr>
             @endif

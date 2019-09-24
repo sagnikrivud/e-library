@@ -34,7 +34,7 @@ body {
   font-size: 12px;
   line-height: 30px;
   color: #777;
-  background: #4CAF50;
+  background: #cdffa8;
 }
 
 img {

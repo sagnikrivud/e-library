@@ -75,7 +75,7 @@
                 <div class="top-right links">
                     @auth
                     <table>
-                     <td><a href=""><form action="{{ url('/home') }}" method="get"><button class="btn btn-info" type="submit" value="submit">Home</button></form></a></td>   
+                     <a href=""><form action="{{ url('/home') }}" method="get"><button class="btn btn-info" type="submit" value="submit">Home</button></form></a>   
                     @else
                         <td><a href=""><form action="{{ route('login') }}" method="get"><button class='btn btn-danger' type="submit" value="submit">Login</button></form></a></td>
 

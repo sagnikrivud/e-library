@@ -53,6 +53,8 @@ class AdminController extends Controller
 					        $book ->name     =  $request->input('name');
 					        $book ->quantity =  $request->input('quantity');
 					        $book ->author   =  $request->input('author');
+                  $book->available =  $request->input('available');
+                  $book->catagory  =  $request->input('catagory');
 					        //Insert Image//
 					        $image           =  $request->image;
 					        $pic             =  $image->getClientOriginalName();
@@ -122,7 +124,7 @@ class AdminController extends Controller
               $book_id_result= DB::table('issues')->where('id',$id)->get(['book_id'])->toArray();
               $x  = $book_id_result[0];
               $book_id  = $x->book_id;    
-             DB::table('books')->where('id',$book_id)->increment('available',1); 
+              DB::table('books')->where('id',$book_id)->increment('available',1); 
               //return redirect('/issuemonitor')->withSuccess('Updated..!');
 
                  //------------------Fine Calculation-----------------------//
@@ -148,7 +150,7 @@ class AdminController extends Controller
               $days     = round($diif / (60 * 60 * 24));   // convert into day*
            //   print_r($days);
            //   die;  
-              $limit = DB::table('settings')->get(['reserve_period'])->toArray();
+              $limit = DB::table('settings')->where('id',1)->get(['reserve_period'])->toArray();
             //  print_r($limit);
              // die;
               $n = $limit[0];
@@ -158,13 +160,13 @@ class AdminController extends Controller
              //  print_r($period);
              //  die;
               if($days>$period){
-              $l = DB::table('settings')->get(['fine_amount'])->toArray();
+              $l = DB::table('settings')->where('id',1)->get(['fine_amount'])->toArray();
               $v = $l[0]; 
               $amount = $v->fine_amount;
             //  print_r($amount);
             //  die;
-               $fine = $days*$amount;
-           //   echo 'Your Caution money is',' ','Rupees',$fine,'/-';
+              $fine = $days*$amount;
+            echo 'Your Caution money is',' ','Rupees',$fine,'/-';
              return redirect('/fine')->with(['id'=>$id,'fine'=>$fine]);
               }else{
              return redirect('/issuemonitor')->withSuccess('Updated..!'); 

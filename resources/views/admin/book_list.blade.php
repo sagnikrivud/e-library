@@ -27,9 +27,11 @@
 			<th>Book</th>
 			<th>Look</th>
 			<th>Author</th>
+			<th>Catagory</th>
 			<th>Quantity</th>
 			<th>Aviliblity</th>
 			<th>Add Copy</th>
+
 		</thead>
 		<tbody>
 			@foreach($books as $bookData)
@@ -38,6 +40,7 @@
 				<td>{{$bookData->name}}</td>
 				<td><img src="{{$bookData->image}}" height="100px" width="100px" border="50%"></td>
 				<td>{{$bookData->author}}</td>
+				<td>{{$bookData->catagory}}</td>
 				<td>{{$bookData->quantity}}</td>
 				<td>{{$bookData->available}}</td>
 			<td><a href="/addcopy/{{$bookData['id']}}"><font color="#445JJJ">Add Copy</font></a></td>
