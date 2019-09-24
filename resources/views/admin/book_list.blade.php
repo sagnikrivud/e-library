@@ -51,7 +51,7 @@
 	</table>
 	<div class="button">
 		<form action="{{route('main')}}" method="get">
-		<button class="" type="submit" value="submit">Back</button>
+		<button class="btn btn-warning" type="submit" value="submit">Back</button>
 		</form>
 	</div>
 </div>

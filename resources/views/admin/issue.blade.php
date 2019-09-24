@@ -18,8 +18,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -75,7 +74,7 @@
         		</td>
 	            <td>
 	            	<a href="/statusupdate/{{$issue['id']}}" >Update Status<?php if ($issue['status'] == 'D'){ ?> Disabled <?php   } ?></a>
-	            	<!-- <input type="hidden" name="id" value="{{$issue['id']}}" /> --></td>
+	            </td>
 				</tr>
 			@endforeach
 		</tbody>

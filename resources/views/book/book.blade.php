@@ -238,6 +238,8 @@ $(document).ready(function(){
  });
 });
 </script>
+
+<!-- //-------------------Search End---------------------// -->
 <script>
   const imageName = (image) => {
   return {

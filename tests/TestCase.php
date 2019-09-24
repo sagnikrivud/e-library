@@ -1,10 +1,18 @@
 <?php
 
-namespace Tests;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-
-abstract class TestCase extends BaseTestCase
+class UserTest extends TestCase
 {
-    use CreatesApplication;
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testExample()
+    {
+        $this->assertTrue(true);
+    }
 }

@@ -44,7 +44,7 @@ class AjaxController extends Controller
 
          <td>'.$row->name.'</td>
          <td>'.$row->author.'</td>
-         <td>'.$row->catagory.'</td>
+         
          <td>'.$row->available.'</td>
          <td><div id="app"><img width="100px" height="100px" src="'. $row->image.'"</div></td> 
          <td><button type="submit" name = "book_id" value = "'.$row->id.'">Request</button></td>
@@ -89,33 +89,10 @@ class AjaxController extends Controller
       }
      }
     }
-   //-----------------Contact Check------------------//
-   /*public function contctcheck()
-   {
 
-        $user= new User;  
-        $mobile = $request->get('mobile');  
-        $mobile->mobile = $request->get('mobile');
-      
-
-        $query = DB::table('users')
-                  ->select('mobile')
-                  ->where('mobile','!=',$mobile)
-                  ->get();
-            if($query)
-            {
-                return"New Contact";
-            }
-                return "This Contact already is being used";
-       //......
-        $user->save();
-
-   } */
 
    
 
 
 
 }
-//<td>'.$row-><img src="Images/" height="42" width="42"> .'</td>
-//<img src="{{URL::to($row->image)}}" height="80px" width="80px">
