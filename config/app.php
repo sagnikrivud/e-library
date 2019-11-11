@@ -179,7 +179,8 @@ return [
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        Laravel\Passport\PassportServiceProvider::class
+        Laravel\Passport\PassportServiceProvider::class,
+        Anand\LaravelPaytmWallet\PaytmWalletServiceProvider::class
         
 
     ],
@@ -231,7 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'PaytmWallet' => Anand\LaravelPaytmWallet\Facades\PaytmWallet::class
 
     ],
 

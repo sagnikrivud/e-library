@@ -3,6 +3,7 @@
 namespace Appzcoder\CrudGenerator\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 
 class CrudApiControllerCommand extends GeneratorCommand
 {
@@ -43,7 +44,7 @@ class CrudApiControllerCommand extends GeneratorCommand
     protected function getStub()
     {
         return config('crudgenerator.custom_template')
-        ? config('crudgenerator.path') . '/controller.stub'
+        ? config('crudgenerator.path') . '/api-controller.stub'
         : __DIR__ . '/../stubs/api-controller.stub';
     }
 
@@ -85,7 +86,7 @@ class CrudApiControllerCommand extends GeneratorCommand
         $stub = $this->files->get($this->getStub());
 
         $crudName = strtolower($this->option('crud-name'));
-        $crudNameSingular = str_singular($crudName);
+        $crudNameSingular = Str::singular($crudName);
         $modelName = $this->option('model-name');
         $modelNamespace = $this->option('model-namespace');
         $perPage = intval($this->option('pagination'));
