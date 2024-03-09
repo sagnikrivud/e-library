@@ -20,5 +20,33 @@ The system should provide details on the books held by the members. The system s
 ### <img src="https://image.similarpng.com/very-thumbnail/2021/06/Hazard-warning-attention-sign-with-exclamation-mark-symbol-on-transparent-background-PNG.png" alt="Note" width="18" title="Please check status">Under Development
 
 ## Installation
->Please follow this steps, and also refer the code blocks for ths setup using php dependency  manager (composer).
-Open terminal and run this command, but this is need to remember that the user file or folder write permission should be given under same group, like user: sudo and group: www-data
+>Please follow this steps, and also refer to the code blocks for this setup using php dependency  manager (composer).
+Open the terminal and run this command, but you need to remember that the user file or folder write permission should be given under the same group, like user: sudo and group: www-data
+
+```sh
+$ git clone https://github.com/sagnikrivud/e-library.git
+```
+```sh
+$ cp .env.example .env
+```
+```sh
+$ composer install
+```
+```sh
+$ php artisan key:generate
+```
+```sh
+$ cp .env.example .env
+```
+> Setup .env configuration for Database connect
+```env
+HOST=''
+DB_USER=''
+DB_PASSWORD=''
+DB_NAME=''
+PORT=3306
+```
+> Migrate Database
+```sh
+$ php artisan migrate
+```
