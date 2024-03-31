@@ -1,6 +1,7 @@
 # e-library
 
 ![](https://cdn.icon-icons.com/icons2/2699/PNG/512/laravel_logo_icon_170314.png)
+
 Library management systems are designed to manage the movement of books and maintain records of the members in a library. The software solution is designed based on the system requirements, the people involved, the content of the operation, and the activity to be performed.
 
 The system requirement in library management focuses on the possibility of searching for books by title, author or subject by the member. They should be able to locate a book physically by the unique identification code and the rack number for each book.
